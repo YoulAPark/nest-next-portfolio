@@ -1,7 +1,7 @@
 export default function ResumePage() {
     return (
-        <main style={{ padding: 24 }}>
-            <h1>이력서</h1>
+        <main>
+            <h1>페이지 준비 중입니다.</h1>
         </main>
     )
 }

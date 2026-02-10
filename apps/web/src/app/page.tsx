@@ -6,7 +6,7 @@ export default async function HomePage() {
     const test = await test_json.json()
 
     return (
-        <main style={{ padding: 24 }}>
+        <main>
             <h1>메인 페이지</h1>
             <p>서버상태 : {test.status}</p>
         </main>
