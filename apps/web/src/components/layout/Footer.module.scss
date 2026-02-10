@@ -1,0 +1,9 @@
+.footer {
+    color: var(--color-neutral-800);
+    font-size: 14px;
+    padding: 24px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid var(--footer-border-color);
+}

@@ -1,0 +1,120 @@
+:root {
+    color-scheme: light;
+
+    --color-white: #ffffff;
+    --color-black: #000000;
+
+    --color-neutral-0: #ffffff;
+    --color-neutral-50: #f5f5f7;
+    --color-neutral-100: #e5e5ea;
+    --color-neutral-200: #d2d2d7;
+    --color-neutral-300: #c7c7cc;
+    --color-neutral-400: #aeaeb2;
+    --color-neutral-500: #8e8e93;
+    --color-neutral-600: #6e6e73;
+    --color-neutral-700: #48484a;
+    --color-neutral-800: #1d1d1f;
+    --color-neutral-900: #000000;
+
+    --background-root: #ffffff;
+    --background-surface: #f5f5f7;
+    --background-muted: #fafafa;
+    --background-inverse: #000000;
+
+    --color-text-primary: #303033; /* 본문, 제목 */
+    --color-text-secondary: #6e6e73; /* 설명 */
+    --color-text-tertiary: #86868b; /* 메타정보 */
+    --color-text-disabled: #a1a1a6;
+    --color-text-inverse: #ffffff;
+
+    --color-text-accent: #b64400;
+    --color-text-primary-hover: #000000;
+
+    --color-border-default: #d2d2d7;
+    --color-border-muted: #e5e5ea;
+    --color-border-strong: #1d1d1f;
+
+    --color-state-hover: #f5f5f7;
+    --color-state-active: #e5e5ea;
+    --color-state-focus: #d2d2d7;
+    --color-state-disabled: #f2f2f2;
+
+    --color-accent-primary: #0071e3;
+    --color-accent-hover: #0077ed;
+    --color-accent-active: #0068d1;
+
+    --color-button-accent-50: #f0f7ff;
+    --color-button-accent-100: #d6ebff;
+    --color-button-accent-200: #add6ff;
+    --color-button-accent-300: #85c1ff;
+    --color-button-accent-400: #4da3ff;
+    --color-button-accent-500: #0076df;
+    --color-button-accent-600: #0068c7;
+    --color-button-accent-700: #005bb0;
+
+    --color-button-neutral-50: #f5f5f7;
+    --color-button-neutral-100: #e5e5ea;
+    --color-button-neutral-200: #d2d2d7;
+    --color-button-neutral-300: #c7c7cc;
+    --color-button-neutral-400: #aeaeb2;
+    --color-button-neutral-500: #1d1d1f;
+    --color-button-neutral-600: #000000;
+    --color-button-neutral-700: #000000;
+
+    --color-button-disabled-bg: #f2f2f2;
+    --color-button-disabled-text: #a1a1a6;
+    --color-button-disabled-border: #d2d2d7;
+
+    --footer-background: #f5f5f7;
+    --footer-border-color: #00000029;
+    --footer-text-color: #0000008f;
+    --footer-link-color: #000000b8;
+    --footer-pipe-color: #0000007a;
+    --footer-directory-title-color: #000000e0;
+    --footer-directory-title-color-hover: #000;
+    --footer-directory-title-focus-offset: 4px;
+    --footer-section-border-color: var(--footer-border-color);
+    --footer-pipe-border: 1px solid var(--footer-pipe-color);
+}
+
+html,
+body {
+    margin: 0;
+    max-width: 100vw;
+    overflow-x: hidden;
+    background: var(--background-root);
+    color: var(--color-text-primary);
+    font-family: var(--font-nanum), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:lang(en) {
+    font-family: var(--font-future), sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/** 
+    OS 다크모드 지원 - 추후 지원 예정
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --background: #0a0a0a;
+            --foreground: #ededed;
+        }
+    }
+    @media (prefers-color-scheme: dark) {
+        html {
+            color-scheme: dark;
+        } 
+    }
+*/

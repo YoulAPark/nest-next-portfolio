@@ -1,0 +1,46 @@
+.header {
+    border-bottom: 1px solid var(--footer-border-color);
+
+    > div[data-role='navigation'] {
+        padding: 20px 0px;
+
+        > div {
+            padding: 0px;
+            margin: 0px 20px;
+            display: flex;
+            align-items: center;
+
+            > h1 {
+                font-style: italic;
+            }
+
+            > nav {
+                font-size: 1rem;
+                font-weight: 600;
+                font-style: italic;
+                flex-grow: 1;
+
+                > ul {
+                    display: flex;
+                    justify-content: flex-end;
+                    gap: 2rem;
+                }
+            }
+        }
+    }
+}
+
+.menu {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.link {
+    text-decoration: none;
+    &:hover {
+        color: var(--color-text-primary-hover);
+    }
+}

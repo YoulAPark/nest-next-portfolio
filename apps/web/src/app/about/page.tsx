@@ -1,4 +1,4 @@
-export default function PortfolioPage() {
+export default function AboutPage() {
     return (
         <main>
             <h1>페이지 준비 중입니다.</h1>
