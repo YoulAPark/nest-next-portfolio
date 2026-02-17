@@ -5,73 +5,75 @@
     --color-black: #000000;
 
     --color-neutral-0: #ffffff;
-    --color-neutral-50: #f5f5f7;
-    --color-neutral-100: #e5e5ea;
-    --color-neutral-200: #d2d2d7;
-    --color-neutral-300: #c7c7cc;
-    --color-neutral-400: #aeaeb2;
-    --color-neutral-500: #8e8e93;
-    --color-neutral-600: #6e6e73;
-    --color-neutral-700: #48484a;
-    --color-neutral-800: #1d1d1f;
-    --color-neutral-900: #000000;
+    --color-neutral-50: #f4f2ee;
+    --color-neutral-100: #e8e4dd;
+    --color-neutral-200: #d6d2cb;
+    --color-neutral-300: #c4c0b9;
+    --color-neutral-400: #a9a59e;
+    --color-neutral-500: #8f8b84;
+    --color-neutral-600: #6f6b65;
+    --color-neutral-700: #4f4b46;
+    --color-neutral-800: #2f2c28;
+    --color-neutral-900: #181716;
 
-    --background-root: #ffffff;
-    --background-surface: #f5f5f7;
-    --background-muted: #fafafa;
-    --background-inverse: #000000;
+    --background-root: #f4f2ee;
+    --background-surface: #ffffff;
+    --background-muted: #e8e4dd;
+    --background-inverse: #1e2a36;
 
-    --color-text-primary: #303033; /* 본문, 제목 */
-    --color-text-secondary: #6e6e73; /* 설명 */
-    --color-text-tertiary: #86868b; /* 메타정보 */
-    --color-text-disabled: #a1a1a6;
-    --color-text-inverse: #ffffff;
+    --color-text-primary: #1f2a33;
+    --color-text-secondary: #4a5a68;
+    --color-text-tertiary: #6e7f8d;
+    --color-text-disabled: #a9b4bd;
+    --color-text-inverse: #e6edf3;
 
-    --color-text-accent: #b64400;
-    --color-text-primary-hover: #000000;
+    --color-text-accent: #6e94ab;
+    --color-text-primary-hover: #0f1a24;
 
-    --color-border-default: #d2d2d7;
-    --color-border-muted: #e5e5ea;
-    --color-border-strong: #1d1d1f;
+    --color-border-default: #d6d2cb;
+    --color-border-muted: #e8e4dd;
+    --color-border-strong: #2f2c28;
 
-    --color-state-hover: #f5f5f7;
-    --color-state-active: #e5e5ea;
-    --color-state-focus: #d2d2d7;
-    --color-state-disabled: #f2f2f2;
+    --color-state-hover: #ece8e2;
+    --color-state-active: #e2ded7;
+    --color-state-focus: #cfd8df;
+    --color-state-disabled: #f2f0eb;
 
-    --color-accent-primary: #0071e3;
-    --color-accent-hover: #0077ed;
-    --color-accent-active: #0068d1;
+    --color-accent-primary: #6e94ab;
+    --color-accent-hover: #5d859e;
+    --color-accent-active: #4e748c;
 
-    --color-button-accent-50: #f0f7ff;
-    --color-button-accent-100: #d6ebff;
-    --color-button-accent-200: #add6ff;
-    --color-button-accent-300: #85c1ff;
-    --color-button-accent-400: #4da3ff;
-    --color-button-accent-500: #0076df;
-    --color-button-accent-600: #0068c7;
-    --color-button-accent-700: #005bb0;
+    /* Button Accent */
+    --color-button-accent-50: #eef5f9;
+    --color-button-accent-100: #dceaf2;
+    --color-button-accent-200: #c3dbe6;
+    --color-button-accent-300: #a7c4d6;
+    --color-button-accent-400: #8faec6;
+    --color-button-accent-500: #6e94ab;
+    --color-button-accent-600: #5d859e;
+    --color-button-accent-700: #4e748c;
 
-    --color-button-neutral-50: #f5f5f7;
-    --color-button-neutral-100: #e5e5ea;
-    --color-button-neutral-200: #d2d2d7;
-    --color-button-neutral-300: #c7c7cc;
-    --color-button-neutral-400: #aeaeb2;
-    --color-button-neutral-500: #1d1d1f;
-    --color-button-neutral-600: #000000;
-    --color-button-neutral-700: #000000;
+    /* Button Neutral */
+    --color-button-neutral-50: #f4f2ee;
+    --color-button-neutral-100: #e8e4dd;
+    --color-button-neutral-200: #d6d2cb;
+    --color-button-neutral-300: #c4c0b9;
+    --color-button-neutral-400: #a9a59e;
+    --color-button-neutral-500: #4f4b46;
+    --color-button-neutral-600: #2f2c28;
+    --color-button-neutral-700: #181716;
 
-    --color-button-disabled-bg: #f2f2f2;
-    --color-button-disabled-text: #a1a1a6;
-    --color-button-disabled-border: #d2d2d7;
+    --color-button-disabled-bg: #ece8e2;
+    --color-button-disabled-text: #a9a59e;
+    --color-button-disabled-border: #d6d2cb;
 
-    --footer-background: #f5f5f7;
-    --footer-border-color: #00000029;
-    --footer-text-color: #0000008f;
-    --footer-link-color: #000000b8;
-    --footer-pipe-color: #0000007a;
-    --footer-directory-title-color: #000000e0;
-    --footer-directory-title-color-hover: #000;
+    --footer-background: #e8e4dd;
+    --footer-border-color: #2f2c281a;
+    --footer-text-color: #4f4b46;
+    --footer-link-color: #2f2c28;
+    --footer-pipe-color: #8f8b84;
+    --footer-directory-title-color: #2f2c28;
+    --footer-directory-title-color-hover: #0f1a24;
     --footer-directory-title-focus-offset: 4px;
     --footer-section-border-color: var(--footer-border-color);
     --footer-pipe-border: 1px solid var(--footer-pipe-color);

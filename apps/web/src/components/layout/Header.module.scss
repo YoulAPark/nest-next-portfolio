@@ -11,7 +11,31 @@
             align-items: center;
 
             > h1 {
-                font-style: italic;
+                position: relative;
+                font-family: var(--font-future);
+                letter-spacing: -0.04em;
+
+                background: linear-gradient(
+                    90deg,
+                    var(--color-accent-primary),
+                    #a7c4d6,
+                    var(--color-accent-primary)
+                );
+
+                background-size: 200% auto;
+                background-position: 0% center;
+
+                background-clip: text;
+                -webkit-background-clip: text;
+
+                color: transparent;
+                -webkit-text-fill-color: transparent;
+
+                transition: background-position 0.6s ease;
+
+                &:hover {
+                    background-position: 100% center;
+                }
             }
 
             > nav {
