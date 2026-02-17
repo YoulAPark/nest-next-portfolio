@@ -21,4 +21,8 @@ async function bootstrap(): Promise<void> {
 
     await app.listen(port, host)
 }
-bootstrap()
+
+bootstrap().catch((err: unknown) => {
+    console.error('❌ Failed to start Nest application', err)
+    process.exit(1)
+})
