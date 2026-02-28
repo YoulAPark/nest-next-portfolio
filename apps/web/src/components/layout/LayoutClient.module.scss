@@ -1,0 +1,13 @@
+#app {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+
+    &.app-hidden {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    &.app-loaded {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

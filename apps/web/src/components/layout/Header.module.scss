@@ -1,26 +1,24 @@
 .header {
     border-bottom: 1px solid var(--footer-border-color);
 
-    > div[data-role='navigation'] {
+    >div[data-role='navigation'] {
         padding: 20px 0px;
 
-        > div {
+        >div {
             padding: 0px;
             margin: 0px 20px;
             display: flex;
             align-items: center;
 
-            > h1 {
+            >h1 {
                 position: relative;
                 font-family: var(--font-future);
                 letter-spacing: -0.04em;
 
-                background: linear-gradient(
-                    90deg,
-                    var(--color-accent-primary),
-                    #a7c4d6,
-                    var(--color-accent-primary)
-                );
+                background: linear-gradient(90deg,
+                        var(--color-accent-primary),
+                        #a7c4d6,
+                        var(--color-accent-primary));
 
                 background-size: 200% auto;
                 background-position: 0% center;
@@ -38,13 +36,13 @@
                 }
             }
 
-            > nav {
+            >nav {
                 font-size: 1rem;
-                font-weight: 600;
+                font-weight: 700;
                 font-style: italic;
                 flex-grow: 1;
 
-                > ul {
+                >ul {
                     display: flex;
                     justify-content: flex-end;
                     gap: 2rem;
@@ -64,6 +62,7 @@
 
 .link {
     text-decoration: none;
+
     &:hover {
         color: var(--color-text-primary-hover);
     }
