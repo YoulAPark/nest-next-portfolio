@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.scss'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
 import Font from 'next/font/local'
+import LayoutClient from '@/components/layout/LayoutClient'
 
 export const metadata: Metadata = {
     title: {
@@ -70,10 +69,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ko">
-            <body className={`${Nanum.variable} ${Future.variable}`}>
-                <Header />
-                <main>{children}</main>
-                <Footer />
+            {/* Chrome 확장자 관련 문제로 임시설정. 추후 제거 : suppressHydrationWarning */}
+            <body suppressHydrationWarning className={`${Nanum.variable} ${Future.variable}`}>
+                <LayoutClient>{children}</LayoutClient>
             </body>
         </html>
     )
