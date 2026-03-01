@@ -1,5 +1,24 @@
 .header {
-    border-bottom: 1px solid var(--footer-border-color);
+    background: rgba(244, 242, 238, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border-muted);
+
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+
+    &.transparent {
+        background: transparent;
+        box-shadow: none;
+    }
+
+    &.solid {
+        background: var(--background-root);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
 
     >div[data-role='navigation'] {
         padding: 20px 0px;
