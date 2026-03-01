@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import styles from "./LayoutClient.module.scss";
 import SplashScreen from "@/components/overlay/SplashScreen";
+import ScrollToTop from "@/components/overlay/ScrollToTop";
 
 export default function LayoutClient({
     children,
@@ -28,6 +29,7 @@ export default function LayoutClient({
             <div id="app" className={`${styles.app} ${loaded ? styles.loaded : styles.hidden}`}>
                 <Header />
                 <main>{children}</main>
+                <ScrollToTop />
                 <Footer />
             </div>
         </>
