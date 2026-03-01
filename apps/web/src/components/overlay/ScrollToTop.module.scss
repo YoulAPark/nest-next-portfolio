@@ -1,0 +1,37 @@
+.button {
+    cursor: pointer;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 20px;
+    right: 15px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--color-button-accent-400);
+    color: var(--color-text-inverse);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    &.show {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+
+        &:hover {
+            transform: translateY(0) scale(1.1);
+            color: white;
+        }
+    }
+
+    &.hide {
+        opacity: 0;
+        transform: translateY(10px);
+        pointer-events: none;
+    }
+}
