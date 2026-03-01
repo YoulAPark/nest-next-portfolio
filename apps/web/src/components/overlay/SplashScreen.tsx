@@ -20,8 +20,7 @@ export default function SplashScreen({ onFinish }: { onFinish: () => void }) {
                 {text.split("").map((char, index) => (
                     <span
                         key={index}
-                        className={`${styles.char} ${char === "Youl" ? styles.accent : ""
-                            }`}
+                        className={styles.char}
                         style={{ animationDelay: `${index * 0.1}s` }}
                     >
                         {char}
