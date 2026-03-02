@@ -29,9 +29,10 @@
 
     --color-text-accent: #6e94ab;
     --color-text-primary-hover: #0f1a24;
+    --color-text-decoration: #6e94ab48;
 
     --color-border-default: #d6d2cb;
-    --color-border-muted: #e8e4dd;
+    --color-border-muted: #6e94ab;
     --color-border-strong: #2f2c28;
 
     --color-state-hover: #ece8e2;
@@ -105,6 +106,18 @@ body {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+ul,
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0;
+    padding: 0;
 }
 
 /** 
