@@ -10,6 +10,54 @@ export const metadata: Metadata = {
     },
     description: 'Full-stack Developer Portfolio & Tech Blog Website of ParkYoula',
 }
+
+const Grotesk = Font({
+    src: [
+        {
+            path: '../../public/fonts/Space-Grotesk/SpaceGrotesk-Light.ttf',
+            weight: '300',
+            style: 'normal',
+        },
+        {
+            path: '../../public/fonts/Space-Grotesk/SpaceGrotesk-Medium.ttf',
+            weight: '400',
+            style: 'normal',
+        },
+        {
+            path: '../../public/fonts/Space-Grotesk/SpaceGrotesk-Regular.ttf',
+            weight: '500',
+            style: 'normal',
+        },
+        {
+            path: '../../public/fonts/Space-Grotesk/SpaceGrotesk-Bold.ttf',
+            weight: '600',
+            style: 'normal',
+        },
+        {
+            path: '../../public/fonts/Space-Grotesk/SpaceGrotesk-SemiBold.ttf',
+            weight: '700',
+            style: 'normal',
+        },
+    ],
+    variable: '--font-grotask',
+    display: 'swap',
+})
+
+const Gowun = Font({
+    src: [
+        {
+            path: '../../public/fonts/GowunBatang/GowunBatang-Bold.ttf',
+            style: 'normal',
+        },
+        {
+            path: '../../public/fonts/GowunBatang/GowunBatang-Regular.ttf',
+            style: 'italic',
+        },
+    ],
+    variable: '--font-gowun',
+    display: 'swap',
+})
+
 const Future = Font({
     src: [
         {
@@ -70,7 +118,7 @@ export default function RootLayout({
     return (
         <html lang="ko">
             {/* Chrome 확장자 관련 문제로 임시설정. 추후 제거 : suppressHydrationWarning */}
-            <body suppressHydrationWarning className={`${Nanum.variable} ${Future.variable}`}>
+            <body suppressHydrationWarning className={`${Nanum.variable} ${Future.variable} ${Gowun.variable} ${Grotesk.variable}`}>
                 <LayoutClient>{children}</LayoutClient>
             </body>
         </html>
