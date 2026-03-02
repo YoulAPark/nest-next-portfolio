@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import styles from './page.module.scss'
 import { ArrowRight } from 'lucide-react'
+import TimeWidget from "@/components/ui/TimeWidget"
 
 export default async function Main() {
     // `${process.env.NEXT_PUBLIC_API_URL}/test`
@@ -12,9 +13,59 @@ export default async function Main() {
     return (
         <div className={styles.main}>
             <section id="hero" className={`${styles.section} ${styles.hero}`}>
-                <h2>Full-stack Developer</h2>
-                <p>백엔드 중심으로 설계하고, 프론트엔드와 인프라까지 연결하는 개발자입니다.</p>
-            </section>
+                <div className={styles.top}>
+                    <div className={styles.topLeft}>
+                        <p>YoulA Park</p>
+                        <span>Full-Stack Developer · Junior Developer</span>
+                    </div>
+                    <div className={styles.topRight}>
+                        <a href="mailto:urdepone@gmail.com" className={`${styles.link} ${styles.active}`}
+                            aria-label="Email" >Email</a>
+                        <a href="https://github.com/YoulAPark" className={`${styles.link} ${styles.active}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="GitHub">GitHub</a>
+                        <a href="https://velog.io/@ouneno" className={`${styles.link} ${styles.active}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Velog">Velog</a>
+                        <a
+                            href="https://linkedin.com/in/youlapark" className={`${styles.link} ${styles.inactive}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="LinkedIn"
+                        >
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+
+                <div className={styles.middle}>
+                    <div className={styles.center}>
+                        <h2>Full-stack Developer</h2>
+                        <p>백엔드 중심으로 설계하고, 프론트엔드와 인프라까지 연결하는 개발자입니다.</p>
+                    </div>
+                </div>
+
+                <div className={styles.bottom}>
+                    <div className={styles.bottomLeft}>
+                        <p className={styles.hoverLang}>
+                            <span className={styles.en}>
+                                I’m a developer who collaborates from planning to operations.<br />
+                                I strive to write code that anyone can understand and continue building on,<br />
+                                and I believe in designing better solutions through code reviews and thoughtful discussions.
+                            </span>
+
+                            <span className={styles.ko}>
+                                기획부터 운영까지 함께 고민하는 개발자입니다.<br />
+                                누구나 이해하고 이어갈 수 있는 코드를 만들며,
+                                코드 리뷰와 깊은 대화를 통해 더 나은 방향을 함께 설계합니다.
+                            </span>
+                        </p>
+                    </div>
+                    <div className={styles.bottomRight}><TimeWidget /></div>
+                </div>
+            </section >
 
             <section id="career" className={`${styles.section} ${styles.career}`}>
                 <div className={styles.container}>
