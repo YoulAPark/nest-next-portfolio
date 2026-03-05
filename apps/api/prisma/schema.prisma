@@ -1,0 +1,127 @@
+// Prisma Schema 파일: 데이터베이스 구조 정의 및 클라이언트 생성 설정
+// Docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// 1. Career - 경력 공통
+model Career {
+  id Int @id @default(autoincrement())
+
+  /// 입사 일자 (YYYY-MM-DD)
+  startDate DateTime @map("start_date")
+
+  /// 퇴사 일자 (YYYY-MM-DD / null일 경우 '재직 중')
+  endDate DateTime? @map("end_date")
+
+  /// 메인 페이지 노출 우선순위 (낮을수록 상단)
+  order Int @default(0)
+
+  contentKo CareerKo?
+  contentEn CareerEn?
+  projects  Project[]
+
+  @@map("careers")
+}
+
+/// 2. Career - Korean
+model CareerKo {
+  id Int @id @default(autoincrement())
+
+  /// 회사명 - 국문
+  companyName String @map("company_name")
+
+  /// 직무명 - 국문
+  role String
+
+  /// 회사 및 역할에 대한 전체적인 설명
+  description String @db.Text
+
+  careerId Int    @unique @map("career_id")
+  career   Career @relation(fields: [careerId], references: [id], onDelete: Cascade)
+
+  @@map("career_ko")
+}
+
+/// 3. Career - English
+model CareerEn {
+  id Int @id @default(autoincrement())
+
+  /// 회사명 - 영문
+  companyName String @map("company_name")
+
+  /// 직무명 - 영문
+  role String
+
+  /// 회사 및 역할에 대한 전체적인 설명
+  description String @db.Text
+
+  careerId Int    @unique @map("career_id")
+  career   Career @relation(fields: [careerId], references: [id], onDelete: Cascade)
+
+  @@map("career_en")
+}
+
+// 4. Project - 프로젝트 공통
+model Project {
+  id Int @id @default(autoincrement())
+
+  /// 프로젝트 진행기간 - (예: "2025.01 - 2025.08")
+  period String
+
+  careerId  Int        @map("career_id")
+  career    Career     @relation(fields: [careerId], references: [id], onDelete: Cascade)
+  contentKo ProjectKo?
+  contentEn ProjectEn?
+
+  /// 기술 스택 태그
+  tags Tag[] @relation("project_tags")
+
+  @@map("projects")
+}
+
+// 5. Project - Korean
+model ProjectKo {
+  id Int @id @default(autoincrement())
+
+  /// 프로젝트명
+  title String
+
+  /// 주요 성과 - (국문, JSON 형식: ["성과1", "성과2"])
+  achievements Json
+
+  projectId Int     @unique @map("project_id")
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@map("project_ko")
+}
+
+// 6. Project - English
+model ProjectEn {
+  id Int @id @default(autoincrement())
+
+  /// 프로젝트명
+  title String
+
+  /// 주요 성과 - (영문, JSON 형식: ["성과1", "성과2"])
+  achievements Json
+
+  projectId Int     @unique @map("project_id")
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@map("project_en")
+}
+
+// 7. 기술 스택
+model Tag {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  projects Project[] @relation("project_tags")
+
+  @@map("tags")
+}
