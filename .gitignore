@@ -33,3 +33,6 @@ Thumbs.db
 
 # Turborepo
 .turbo/
+
+# Spec 명세
+Spec.README.md
