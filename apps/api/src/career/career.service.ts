@@ -1,59 +1,87 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common'
 import { PrismaService } from '../prisma/prisma.service'
 
 @Injectable()
 export class CareerService {
-    constructor(private prisma: PrismaService) { }
+    constructor(private prisma: PrismaService) {}
 
-    async findAll(lang: 'ko' | 'en' = 'ko') {
+    /**
+     * 다국어 처리가 완료된 프론트엔드 맞춤형 경력 목록을 반환한다.
+     *
+     * @param {'ko' | 'en'} [lang='ko'] - 선택한 언어
+     * @returns 다국어 처리 및 근무 기간 계산이 완료된 정제된 경력 목록
+     */
+    async findAll(language: 'ko' | 'en' = 'ko') {
+        /**
+         * 언어에 맞춰 각 회사에서 수행한 프로젝트와 기술을 최신 경력순으로 출력한다.
+         */
         const careers = await this.prisma.career.findMany({
-            orderBy: { startDate: 'desc' }, // 최신순
+            orderBy: { startDate: 'desc' },
             include: {
-                contentKo: lang === 'ko',
-                contentEn: lang === 'en',
+                contentKo: language === 'ko',
+                contentEn: language === 'en',
                 projects: {
                     include: {
-                        contentKo: lang === 'ko',
-                        contentEn: lang === 'en',
+                        contentKo: language === 'ko',
+                        contentEn: language === 'en',
                         tags: true,
                     },
                 },
             },
-        });
+        })
 
         return careers.map((career) => {
-            const start = new Date(career.startDate);
-            const end = career.endDate ? new Date(career.endDate) : new Date();
+            const duration = this.getDuration(career.startDate, career.endDate, language)
 
-            // 총 개월 수 계산
-            const totalMonths = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+            const content = language === 'ko' ? career.contentKo : career.contentEn
 
-            const years = Math.floor(totalMonths / 12);
-            const months = totalMonths % 12;
-
-            // 다국어 대응 기간 텍스트
-            const durationText = lang === 'ko'
-                ? `${years > 0 ? `${years}년 ` : ''}${months > 0 ? `${months}개월` : years === 0 ? '1개월 미만' : ''}`.trim()
-                : `${years > 0 ? `${years}y ` : ''}${months > 0 ? `${months}m` : years === 0 ? 'under 1m' : ''}`.trim();
-
-            // 필요한 데이터만 골라서 깔끔하게 정제 (Flattening)
             return {
                 id: career.id,
                 startDate: career.startDate,
                 endDate: career.endDate,
-                duration: durationText, // 가공된 텍스트!
+                duration,
                 order: career.order,
-                companyName: lang === 'ko' ? career.contentKo?.companyName : career.contentEn?.companyName,
-                role: lang === 'ko' ? career.contentKo?.role : career.contentEn?.role,
-                description: lang === 'ko' ? career.contentKo?.description : career.contentEn?.description,
-                projects: career.projects.map((p) => ({
-                    id: p.id,
-                    period: p.period,
-                    title: lang === 'ko' ? p.contentKo?.title : p.contentEn?.title,
-                    achievements: lang === 'ko' ? p.contentKo?.achievements : p.contentEn?.achievements,
-                    tags: p.tags.map((t) => t.name),
-                })),
-            };
-        });
+                companyName: content?.companyName ?? '',
+                role: content?.role ?? '',
+                description: content?.description ?? '',
+
+                projects: career.projects.map((p) => {
+                    const projectContent = language === 'ko' ? p.contentKo : p.contentEn
+
+                    return {
+                        id: p.id,
+                        period: p.period,
+                        title: projectContent?.title ?? '',
+                        achievements: projectContent?.achievements ?? '',
+                        tags: p.tags.map((t) => t.name),
+                    }
+                }),
+            }
+        })
+    }
+
+    /**
+     * 시작일과 종료일을 계산하여 다국어 기간 텍스트를 생성한다.
+     * 종료일이 없을 경우 현재 날짜를 기준으로 계산한다.
+     *
+     * @param {Date} startDate - 근무 시작일
+     * @param {Date | null} endDate - 근무 종료일 (null일 경우 현재 시각으로 계산)
+     * @param {'ko' | 'en'} lang - 적용할 다국어 코드
+     * @returns {string} 가공된 기간 텍스트
+     */
+    private getDuration(startDate: Date, endDate: Date | null, lang: 'ko' | 'en'): string {
+        const start = new Date(startDate)
+        const end = endDate ? new Date(endDate) : new Date()
+
+        const totalMonths =
+            (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth())
+        const years = Math.floor(totalMonths / 12)
+        const months = totalMonths % 12
+
+        if (lang === 'ko') {
+            return `${years > 0 ? `${years}년 ` : ''}${months > 0 ? `${months}개월` : years === 0 ? '1개월 미만' : ''}`.trim()
+        } else {
+            return `${years > 0 ? `${years}y ` : ''}${months > 0 ? `${months}m` : years === 0 ? 'under 1m' : ''}`.trim()
+        }
     }
 }
