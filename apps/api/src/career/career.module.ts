@@ -1,9 +1,11 @@
-import { Module } from '@nestjs/common';
-import { CareerService } from './career.service';
-import { CareerController } from './career.controller';
+import { Module } from '@nestjs/common'
+import { CareerService } from './career.service'
+import { CareerController } from './career.controller'
+import { PrismaService } from '../prisma/prisma.service'
 
 @Module({
     controllers: [CareerController],
-    providers: [CareerService],
+    providers: [CareerService, PrismaService],
+    exports: [CareerService],
 })
-export class CareerModule { }
+export class CareerModule {}
