@@ -5,31 +5,33 @@ import { PrismaMariaDb } from '@prisma/adapter-mariadb'
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit, OnModuleDestroy {
     constructor() {
-        const host = process.env.DB_HOST
-        const port = Number(process.env.DB_PORT)
-        const user = process.env.DB_USER
-        const password = process.env.DB_PASSWORD
-        const database = process.env.DB_NAME
+        const connection = process.env.DATABASE_URL
 
-        if (!host || !user || !database) {
-            throw new Error('❌ 환경설정 파일 내의 DB_HOST, DB_USER, DB_NAME 변수를 확인해주시기 바랍니다.')
+        if (connection == undefined) {
+            throw new Error('❌ 환경변수 DATABASE_URL이 설정되지 않았습니다.')
         }
 
-        const adapter = new PrismaMariaDb({
-            host,
-            port,
-            user,
-            password,
-            database,
-        })
+        // const  = new PrismaMariaDb(connection)
 
+        const separator = connection.includes('?') ? '&' : '?'
+        const connectionString = `${connection}${separator}allowPublicKeyRetrieval=true&useSSL=false`
+
+        // 객체 대신 완성된 문자열을 넘기면 타입 에러가 사라집니다.
+        const adapter = new PrismaMariaDb(connectionString)
         super({ adapter })
     }
 
+    /**
+     * 애플리케이션 실행시 DB 연결을 수행한다.
+     */
     async onModuleInit(): Promise<void> {
         await this.$connect()
+        console.log('🚀 Prisma v7: MySQL Driver Adapter가 정상 연결 되었습니다.')
     }
 
+    /**
+     * 애플리케이션 종료시 DB 연결을 해제한다.
+     */
     async onModuleDestroy(): Promise<void> {
         await this.$disconnect()
     }
