@@ -21,29 +21,34 @@ export class CareerService {
                 contentKo: language === 'ko',
                 contentEn: language === 'en',
                 projects: {
+                    orderBy: { period: 'desc' },
                     include: {
                         contentKo: language === 'ko',
                         contentEn: language === 'en',
-                        tags: true,
+                        tags: {
+                            orderBy: { priority: 'asc' },
+                        },
                     },
                 },
             },
         })
 
         return careers.map((career) => {
+            const startDate = this.getDate(career.startDate)
+            const endDate = this.getDate(career.endDate)
             const duration = this.getDuration(career.startDate, career.endDate, language)
 
             const content = language === 'ko' ? career.contentKo : career.contentEn
 
             return {
                 id: career.id,
-                startDate: career.startDate,
-                endDate: career.endDate,
+                startDate,
+                endDate,
                 duration,
                 order: career.order,
                 companyName: content?.companyName ?? '',
                 role: content?.role ?? '',
-                description: content?.description ?? '',
+                description: (content?.description ?? '').replace(/\\n/g, '\n'),
 
                 projects: career.projects.map((p) => {
                     const projectContent = language === 'ko' ? p.contentKo : p.contentEn
@@ -53,7 +58,7 @@ export class CareerService {
                         period: p.period,
                         title: projectContent?.title ?? '',
                         achievements: projectContent?.achievements ?? '',
-                        tags: p.tags.map((t) => t.name),
+                        tags: p.tags,
                     }
                 }),
             }
@@ -83,5 +88,23 @@ export class CareerService {
         } else {
             return `${years > 0 ? `${years}y ` : ''}${months > 0 ? `${months}m` : years === 0 ? 'under 1m' : ''}`.trim()
         }
+    }
+
+    /**
+     * Date 객체를 'YYYY.MM' 형식으로 변환한다.
+     *
+     * @param {Date | String | null} date - 출력일자
+     * @returns {string} 가공된 기간 텍스트
+     */
+    private getDate(date: Date | string | null): string | null {
+        if (!date) {
+            return null
+        }
+
+        const d = new Date(date)
+        const year = d.getFullYear()
+        const month = String(d.getMonth() + 1).padStart(2, '0')
+
+        return `${year}.${month}`
     }
 }
