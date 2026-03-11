@@ -22,6 +22,12 @@ model Career {
   /// 메인 페이지 노출 우선순위 (낮을수록 상단)
   order Int @default(0)
 
+  /// 생성일자
+  createdAt DateTime @default(now()) @map("created_at")
+
+  /// 수정일자
+  updatedAt DateTime @default(now()) @map("updated_at")
+
   contentKo CareerKo?
   contentEn CareerEn?
   projects  Project[]
@@ -82,6 +88,12 @@ model Project {
   /// 기술 스택 태그
   tags Tag[] @relation("project_tags")
 
+  /// 생성일자
+  createdAt DateTime @default(now()) @map("created_at")
+
+  /// 수정일자
+  updatedAt DateTime @default(now()) @map("updated_at")
+
   @@map("projects")
 }
 
@@ -121,6 +133,7 @@ model ProjectEn {
 model Tag {
   id       Int       @id @default(autoincrement())
   name     String    @unique
+  priority Int       @default(999)
   projects Project[] @relation("project_tags")
 
   @@map("tags")
