@@ -5,11 +5,12 @@ async function bootstrap(): Promise<void> {
     const app = await NestFactory.create(AppModule)
 
     /**
-     * Cross-Origin 요청 허용 설정
+     * 브라우저의 CROS(Cross-Origin) 요청을 허용한다.
      * Next.js(3000) → Nest(3001)
      */
     app.enableCors({
         origin: 'http://localhost:3000',
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         credentials: true,
     })
 
@@ -20,6 +21,7 @@ async function bootstrap(): Promise<void> {
     const port = Number(process.env.PORT) || 3001
 
     await app.listen(port, host)
+    console.log(`🚀 NestJS 어플리케이션이 정상적으로 실행중입니다. -> http://localhost:${port}`)
 }
 
 bootstrap().catch((err: unknown) => {
