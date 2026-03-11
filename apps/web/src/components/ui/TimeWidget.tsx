@@ -1,15 +1,15 @@
-"use client"
+'use client'
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
 /**
  * TimeWidget Component
  * Asia/Seoul 기준의 현재 시간을 실시간으로 표시하는 위젯입니다.
- * 
+ *
  * @returns {JSX.Element} 서울 위치 정보 및 현재 시각을 렌더링하는 JSX 요소
  */
 export default function TimeWidget() {
-    const [time, setTime] = useState("")
+    const [time, setTime] = useState('')
 
     useEffect(() => {
         /**
@@ -18,11 +18,11 @@ export default function TimeWidget() {
         const updateTime = () => {
             const now = new Date()
 
-            const formatter = new Intl.DateTimeFormat("ko-KR", {
-                timeZone: "Asia/Seoul",
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
+            const formatter = new Intl.DateTimeFormat('ko-KR', {
+                timeZone: 'Asia/Seoul',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
                 hour12: false,
             })
 

@@ -1,13 +1,13 @@
 packages:
-  - apps/*
-  - packages/*
+    - apps/*
+    - packages/*
 
 ignoredBuiltDependencies:
-  - '@nestjs/core'
-  - '@parcel/watcher'
-  - prisma
-  - sharp
-  - unrs-resolver
+    - '@nestjs/core'
+    - '@parcel/watcher'
+    - prisma
+    - sharp
+    - unrs-resolver
 
 onlyBuiltDependencies:
-  - '@prisma/engines'
+    - '@prisma/engines'

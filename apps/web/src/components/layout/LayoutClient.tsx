@@ -1,26 +1,22 @@
-"use client";
+'use client'
 
-import { useState, useEffect } from "react";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import styles from "./LayoutClient.module.scss";
-import SplashScreen from "@/components/overlay/SplashScreen";
-import ScrollToTop from "@/components/overlay/ScrollToTop";
+import { useState, useEffect } from 'react'
+import Header from '@/components/layout/Header'
+import Footer from '@/components/layout/Footer'
+import styles from './LayoutClient.module.scss'
+import SplashScreen from '@/components/overlay/SplashScreen'
+import ScrollToTop from '@/components/overlay/ScrollToTop'
 
-export default function LayoutClient({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
-    const [loaded, setLoaded] = useState(false);
+export default function LayoutClient({ children }: { children: React.ReactNode }) {
+    const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
         if (!loaded) {
-            document.body.style.overflow = "hidden";
+            document.body.style.overflow = 'hidden'
         } else {
-            document.body.style.overflow = "hidden";
+            document.body.style.overflow = 'hidden'
         }
-    }, [loaded]);
+    }, [loaded])
 
     return (
         <>
@@ -33,5 +29,5 @@ export default function LayoutClient({
                 <Footer />
             </div>
         </>
-    );
+    )
 }

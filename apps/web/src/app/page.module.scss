@@ -2,7 +2,7 @@ div.main {
     display: flex;
     flex-direction: column;
 
-    >section {
+    > section {
         margin: 0 auto;
         width: 100%;
         height: 100vh;
@@ -17,22 +17,22 @@ div.main {
     font-family: var(--font-grotask);
     padding-top: var(--header-h);
 
-    >section.hero {
+    > section.hero {
         height: calc(100dvh - 80px);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         padding: 24px;
 
-        >div.top,
-        >div.bottom {
+        > div.top,
+        > div.bottom {
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
         }
 
-        >div.middle {
+        > div.middle {
             flex: 1;
             display: flex;
             align-items: center;
@@ -40,8 +40,8 @@ div.main {
             text-align: center;
         }
 
-        >div.top {
-            >div.topLeft {
+        > div.top {
+            > div.topLeft {
                 text-align: left;
 
                 p {
@@ -55,26 +55,29 @@ div.main {
                 }
             }
 
-            >div.topRight {
+            > div.topRight {
                 display: flex;
                 gap: 40px;
                 align-items: center;
 
-                >a {
+                > a {
                     &.link {
                         position: relative;
                         display: flex;
                         align-items: center;
 
                         &::after {
-                            content: "";
+                            content: '';
                             position: absolute;
                             top: -1px;
                             right: -7px;
                             width: 4px;
                             height: 4px;
                             border-radius: 50%;
-                            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+                            transition:
+                                background-color 0.3s ease,
+                                box-shadow 0.3s ease,
+                                transform 0.3s ease;
                         }
                     }
 
@@ -95,17 +98,19 @@ div.main {
         }
 
         div.bottom {
-            >div.bottomLeft {
-                >p {
+            > div.bottomLeft {
+                > p {
                     display: grid;
                     font-size: 12px;
                     text-align: left;
                     white-space: normal;
                     word-break: keep-all;
 
-                    >span {
+                    > span {
                         grid-area: 1 / 1;
-                        transition: opacity 0.5s ease, transform 0.5s ease;
+                        transition:
+                            opacity 0.5s ease,
+                            transform 0.5s ease;
 
                         &.ko {
                             opacity: 0;
@@ -125,11 +130,9 @@ div.main {
                         }
                     }
                 }
-
-
             }
 
-            >div.bottomRight {
+            > div.bottomRight {
                 align-items: self-end;
                 text-align: right;
                 color: var(--color-text-tertiary);
@@ -146,14 +149,14 @@ div.main {
     align-items: center;
     text-align: center;
 
-    >h2 {
+    > h2 {
         font-size: 60px;
         letter-spacing: -2.2px;
         font-weight: 800;
         line-height: 80px;
     }
 
-    >p {
+    > p {
         text-align: left;
     }
 }
@@ -162,26 +165,26 @@ div.main {
     background-color: var(--background-muted);
     padding: 80px;
 
-    >div.container {
+    > div.container {
         max-width: 1480px;
         margin: 0 auto;
         padding: 0 24px;
 
-        >h3 {
+        > h3 {
             font-size: 63px;
             font-weight: 800;
             margin-top: 40px;
             margin-bottom: 60px;
         }
 
-        >div.careerContent {
+        > div.careerContent {
             display: flex;
             gap: 60px;
             position: relative;
             margin-bottom: 60px;
 
             &::before {
-                content: "";
+                content: '';
                 position: absolute;
                 left: 0;
                 top: 0;
@@ -190,7 +193,7 @@ div.main {
                 background-color: var(--color-border-muted);
             }
 
-            >div.companyInfo {
+            > div.companyInfo {
                 display: flex;
                 flex-direction: column;
                 flex: 1;
@@ -198,24 +201,29 @@ div.main {
                 padding-left: 30px;
                 min-width: 600px;
 
-                >div.meta {
-                    >h3 {
+                > div.meta {
+                    > h3 {
                         font-size: 50px;
                         font-weight: 800;
                         color: var(--color-text-accent);
                         margin-bottom: 15px;
                     }
 
-                    >p {
+                    > p {
                         color: var(--color-text-tertiary);
                         font-size: 20px;
                         font-weight: 600;
                         margin-bottom: 5px;
                     }
                 }
+
+                > p.description {
+                    white-space: pre-wrap;
+                    line-height: 1.6;
+                }
             }
 
-            >div.teamExperience {
+            > div.teamExperience {
                 display: flex;
                 flex-direction: column;
                 flex: 2;
@@ -224,22 +232,22 @@ div.main {
                 min-width: 600px;
                 border-top: 2px solid var(--color-border-muted);
 
-                >div.teamBlock {
+                > div.teamBlock {
                     display: flex;
                     flex-direction: column;
                     gap: 10px;
 
-                    >h5 {
+                    > h5 {
                         font-size: 20px;
                         font-weight: 800;
                     }
 
-                    >span {
+                    > span {
                         font-weight: 700;
                     }
 
-                    >ul {
-                        >li {
+                    > ul {
+                        > li {
                             display: flex;
                             align-items: center;
                             gap: 5px;
@@ -248,7 +256,7 @@ div.main {
                             text-decoration-color: var(--color-text-decoration);
                             text-underline-offset: 5px;
 
-                            >svg {
+                            > svg {
                                 width: 15px;
                                 height: 15px;
                                 color: var(--color-text-secondary);
@@ -256,13 +264,13 @@ div.main {
                         }
                     }
 
-                    >div.tags {
+                    > div.tags {
                         display: flex;
                         flex-wrap: wrap;
                         gap: 8px;
                         margin: 8px 0 12px 0;
 
-                        >span {
+                        > span {
                             font-size: 13px;
                             font-weight: 600;
                             padding: 6px 12px;

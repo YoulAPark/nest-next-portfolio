@@ -7,25 +7,29 @@ div.overlay {
     justify-content: center;
     z-index: 9999;
 
-    >div.logo {
+    > div.logo {
         font-size: 38px;
         font-weight: 700;
         font-family: var(--font-future), sans-serif;
         letter-spacing: -0.04rem;
 
-        >span.char {
+        > span.char {
             display: inline-block;
-            background: linear-gradient(90deg,
-                    var(--color-accent-primary),
-                    #a7c4d6,
-                    var(--color-accent-primary));
+            background: linear-gradient(
+                90deg,
+                var(--color-accent-primary),
+                #a7c4d6,
+                var(--color-accent-primary)
+            );
             background-size: 200% auto;
             background-position: 0% center;
 
             background-clip: text;
             -webkit-background-clip: text;
 
-            animation: fadeUp 0.6s ease forwards, gradientMove 3s linear infinite;
+            animation:
+                fadeUp 0.6s ease forwards,
+                gradientMove 3s linear infinite;
             color: transparent;
             -webkit-text-fill-color: transparent;
 
