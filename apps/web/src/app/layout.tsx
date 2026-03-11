@@ -118,7 +118,10 @@ export default function RootLayout({
     return (
         <html lang="ko">
             {/* Chrome 확장자 관련 문제로 임시설정. 추후 제거 : suppressHydrationWarning */}
-            <body suppressHydrationWarning className={`${Nanum.variable} ${Future.variable} ${Gowun.variable} ${Grotesk.variable}`}>
+            <body
+                suppressHydrationWarning
+                className={`${Nanum.variable} ${Future.variable} ${Gowun.variable} ${Grotesk.variable}`}
+            >
                 <LayoutClient>{children}</LayoutClient>
             </body>
         </html>

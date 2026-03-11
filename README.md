@@ -21,6 +21,7 @@
 개발 환경의 현재 상태에 따라 아래 두 가지 시나리오 중 하나를 선택하여 실행하십시오.
 
 ### Scenario A: Deep Clean & Reset (환경 재구축)
+
 의존성 그래프(Dependency Graph)가 오염되었거나, OS 아키텍처 이동(예: Windows ↔ macOS Apple Silicon)으로 인해 바이너리 재빌드가 필요한 경우 수행합니다.
 
 ```bash
@@ -39,6 +40,7 @@ pnpm store prune
 ```
 
 ### Scenario B: Fresh Clone (신규 환경 구축)
+
 저장소를 처음 클론(Clone) 받은 경우, 기존 팀원들과 동일한 버전을 보장받기 위해 `pnpm-lock.yaml`의 무결성을 유지하며 설치를 진행합니다.
 
 ```bash
@@ -49,6 +51,7 @@ pnpm install --frozen-lockfile
 cp apps/api/.env.example apps/api/.env
 cp apps/web/.env.example apps/web/.env
 ```
+
 > ⚠️ **주의**: `.env` 파일 복사 후, 본인의 로컬 환경에 맞게 `DB_HOST`, `PORT` 등의 변수를 반드시 검증하십시오.
 
 ---
@@ -56,8 +59,10 @@ cp apps/web/.env.example apps/web/.env
 ## ⚙️ 3. Core Infrastructure Execution
 
 ### 3.1. Modern Docker Provisioning
->**🍎 macOS (Apple Silicon) 사용자 필수 확인**
-M1/M2/M3 등 ARM 아키텍처 맥북을 사용 중이라면 docker-compose.yml의 DB 서비스에 반드시 platform: linux/amd64를 추가해야 합니다.
+
+> **🍎 macOS (Apple Silicon) 사용자 필수 확인**
+> M1/M2/M3 등 ARM 아키텍처 맥북을 사용 중이라면 docker-compose.yml의 DB 서비스에 반드시 platform: linux/amd64를 추가해야 합니다.
+
 ```bash
 YAML
 services:
@@ -81,6 +86,7 @@ docker compose ps --format "table {{.Name}}\t{{.Status}}"
 ```
 
 ### 3.2. Prisma v7 Engine Generation
+
 Prisma v7은 **Driver Adapter** 패턴을 사용하므로, 런타임 환경의 OS 아키텍처에 맞는 Query Engine 바이너리 바인딩이 필수적입니다.
 
 ```bash
@@ -93,12 +99,14 @@ pnpm dlx prisma generate
 ```
 
 ### 3.3. Application Runtime Development
+
 인프라와 ORM 클라이언트가 모두 준비되었다면, API 서버를 구동합니다.
 
 ```bash
 # API 개발 서버 가동
 pnpm run start:dev
 ```
+
 > **Verification Check**: 터미널 구동 로그에 `[Prisma] ✅ Driver Adapter Connected` 메시지가 정상적으로 출력되는지 반드시 확인하십시오.
 
 ---
@@ -111,5 +119,6 @@ pnpm run start:dev
 - **Prisma v7 Configuration**: v7 표준에 따라 마이그레이션 경로는 `schema.prisma`가 아닌 `prisma.config.ts`에서 객체 형태로 관리되어야 합니다. (예: `migrations: { path: "./prisma/migrations" }`)
 
 ---
+
 **Lead Maintainer**: YoulaPark(urdepone@gmail.com)
 **Last Refined**: 2026.03.07

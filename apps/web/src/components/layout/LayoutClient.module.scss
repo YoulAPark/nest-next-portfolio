@@ -1,5 +1,7 @@
 #app {
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
 
     &.app-hidden {
         opacity: 0;

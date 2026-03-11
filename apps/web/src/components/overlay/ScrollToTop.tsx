@@ -1,16 +1,16 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import styles from "./ScrollToTop.module.scss";
+import styles from './ScrollToTop.module.scss'
 import { ArrowUp } from 'lucide-react'
 
 export default function ScrollToTop() {
     const [showButton, setShowButton] = useState(false)
 
     /**
-    * 스크롤 이벤트 핸들러
-    * 현재 스크롤 위치를 기반으로 버튼을 노출시킨다.
-    */
+     * 스크롤 이벤트 핸들러
+     * 현재 스크롤 위치를 기반으로 버튼을 노출시킨다.
+     */
     const handleScroll = () => {
         setShowButton(window.scrollY > 300)
     }

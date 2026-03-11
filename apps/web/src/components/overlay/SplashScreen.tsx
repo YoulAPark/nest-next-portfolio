@@ -1,23 +1,23 @@
-"use client";
+'use client'
 
-import { useEffect } from "react";
-import styles from "./SplashScreen.module.scss";
+import { useEffect } from 'react'
+import styles from './SplashScreen.module.scss'
 
 export default function SplashScreen({ onFinish }: { onFinish: () => void }) {
-    const text = "Youla-Park";
+    const text = 'Youla-Park'
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            onFinish();
-        }, 2300);
+            onFinish()
+        }, 2300)
 
-        return () => clearTimeout(timer);
-    }, [onFinish]);
+        return () => clearTimeout(timer)
+    }, [onFinish])
 
     return (
         <div className={styles.overlay}>
             <div className={styles.logo}>
-                {text.split("").map((char, index) => (
+                {text.split('').map((char, index) => (
                     <span
                         key={index}
                         className={styles.char}
@@ -28,5 +28,5 @@ export default function SplashScreen({ onFinish }: { onFinish: () => void }) {
                 ))}
             </div>
         </div>
-    );
+    )
 }
